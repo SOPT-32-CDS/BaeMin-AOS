@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.BaeminAOS" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -15,7 +15,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    
+
     <style name="TextAppearance.BrandType" parent="">
         <item name="android:fontFamily">@font/brand_type_font</item>
         <item name="fontWeight">400</item>
@@ -28,6 +28,58 @@
 
     <style name="TextAppearance.BrandType.Small">
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold" parent="">
+        <item name="android:fontFamily">@font/pretendard_semibold_font</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.Title">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.H1">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.H2">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.H3">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.Body3">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.SemiBold.Body4">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.Regular" parent="">
+        <item name="android:fontFamily">@font/pretendard_regular_font</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.Regular.Body1">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.Regular.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.Regular.Body3">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Pretendard.Regular.Body4">
+        <item name="android:textSize">10sp</item>
     </style>
 
 </resources>
