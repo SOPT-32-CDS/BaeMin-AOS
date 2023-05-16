@@ -15,4 +15,19 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    
+    <style name="TextAppearance.BrandType" parent="">
+        <item name="android:fontFamily">@font/brand_type_font</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance.BrandType.Big">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.BrandType.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>
