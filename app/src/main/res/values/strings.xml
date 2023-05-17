@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BaeminAOS</string>
+    <string name="tv_cart_toolbar_title">장바구니</string>
 </resources>
