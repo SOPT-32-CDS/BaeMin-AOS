@@ -22,13 +22,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                style="@style/TextAppearance.Pretendard.SemiBold.H3"
+                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_cart_toolbar_title"
                 android:layout_gravity="center"
-                style="@style/TextAppearance.Pretendard.SemiBold.H3"/>
+                android:text="@string/tv_cart_toolbar_title" />
 
         </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/divider_cart_1"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="@color/gray3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_cart" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_cart_1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
