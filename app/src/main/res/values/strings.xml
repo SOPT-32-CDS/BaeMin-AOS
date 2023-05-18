@@ -3,4 +3,9 @@
     <string name="tv_cart_toolbar_title">장바구니</string>
     <string name="btn_cart_option_change">옵션변경</string>
     <string name="tv_cart_more">더 담으러 가기</string>
+    <string name="tv_cart_store_2_title">황후 탕후루</string>
+    <string name="tv_cart_store_2_menu">딸기탕후루 제철이 끝나가는 중</string>
+    <string name="tv_cart_store_2_option">· 가격 : 3,800원</string>
+    <string name="tv_cart_store_2_price">26,600원</string>
+    <string name="tv_cart_store_2_number">7</string>
 </resources>
