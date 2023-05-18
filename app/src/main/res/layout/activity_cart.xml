@@ -23,11 +23,11 @@
 
             <TextView
                 style="@style/TextAppearance.Pretendard.SemiBold.H3"
-                android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/tv_cart_toolbar_title" />
+                android:text="@string/tv_cart_toolbar_title"
+                android:textColor="@color/black" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -40,14 +40,67 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_cart" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view_cart_item_1"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:background="@color/white"
+            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_cart_1" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_cart_1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_cart_item_1_title"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_cart_item_1_title"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:layout_marginStart="14dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextAppearance.Pretendard.SemiBold.Body2"
+                    android:id="@+id/tv_cart_item_1_title"
+                    android:text="정담초밥 송파점"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_cart_item_1_title"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/divider_cart_part_1"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@color/gray3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_cart_item_1_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider_cart_2"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="@color/gray3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_cart_item_1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
