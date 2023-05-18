@@ -66,6 +66,7 @@
 
     <style name="TextAppearance.Pretendard.Regular" parent="">
         <item name="android:fontFamily">@font/pretendard_regular_font</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextAppearance.Pretendard.Regular.Body1">
