@@ -8,4 +8,7 @@
     <string name="tv_cart_store_2_option">· 가격 : 3,800원</string>
     <string name="tv_cart_store_2_price">26,600원</string>
     <string name="tv_cart_store_2_number">7</string>
+    <string name="tv_cart_detail_title">배달로 받을게요</string>
+    <string name="tv_cart_detail_tip">배달팁 2,000원</string>
+    <string name="tv_cart_detail_minute">34~44분 후 도착</string>
 </resources>
