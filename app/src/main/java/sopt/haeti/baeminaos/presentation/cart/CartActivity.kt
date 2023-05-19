@@ -8,6 +8,7 @@ import sopt.haeti.baeminaos.data.local.CartItemData
 import sopt.haeti.baeminaos.databinding.ActivityCartBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
 import timber.log.Timber
+import java.text.DecimalFormat
 
 class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,16 +34,16 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
             itemOneCount = mockCartItemData.count
             tvCartItem1Number.text = itemOneCount.toString()
             itemOneTotalPrice = mockCartItemData.price * mockCartItemData.count
-            tvCartItem1Price.text = itemOneTotalPrice.toString() + "원"
+            tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
         }
 
         // 총 주문금액 변경
         with(binding) {
             val itemTotalPrice = 26600 + itemOneTotalPrice
-            tvCartDetailPrice.text = itemTotalPrice.toString() + "원"
+            tvCartDetailPrice.text = moneyFormat(itemTotalPrice)
             val itemTotalPriceWithTip = itemTotalPrice + 2000
-            tvCartDetailTotalPrice.text = itemTotalPriceWithTip.toString() + "원"
-            tvCartPurchasePrice.text = itemTotalPriceWithTip.toString() + "원"
+            tvCartDetailTotalPrice.text = moneyFormat(itemTotalPriceWithTip)
+            tvCartPurchasePrice.text = moneyFormat(itemTotalPriceWithTip)
         }
     }
 
@@ -65,5 +66,11 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    private fun moneyFormat(money: Int): String {
+        val moneyFormat = DecimalFormat("#,###")
+        val wonFormat = moneyFormat.format(money) + "원"
+        return wonFormat
     }
 }
