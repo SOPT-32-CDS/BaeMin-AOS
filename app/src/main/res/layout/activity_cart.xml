@@ -63,7 +63,6 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
                         android:id="@+id/iv_cart_item_1_title"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
@@ -73,6 +72,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:strokeColor="@color/gray2"
+                        app:strokeWidth="2dp"
                         tools:src="@drawable/ic_launcher_background" />
 
                     <TextView
@@ -128,7 +130,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
                         android:layout_marginStart="14dp"
@@ -136,6 +137,9 @@
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:strokeColor="@color/gray2"
+                        app:strokeWidth="2dp"
                         tools:src="@drawable/ic_launcher_background" />
 
                     <TextView
@@ -289,7 +293,6 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
                         android:id="@+id/iv_cart_item_2_title"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
@@ -299,7 +302,10 @@
                         android:src="@drawable/img_cart_item_2_store"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:strokeColor="@color/gray2"
+                        app:strokeWidth="2dp" />
 
                     <TextView
                         android:id="@+id/tv_cart_item_2_title"
@@ -354,7 +360,6 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
                         android:id="@+id/iv_cart_item_2_food"
                         android:layout_width="68dp"
                         android:layout_height="68dp"
@@ -363,7 +368,10 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/img_cart_item_2_menu"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:strokeColor="@color/gray2"
+                        app:strokeWidth="2dp" />
 
                     <TextView
                         android:id="@+id/tv_cart_item_2_option"
@@ -678,10 +686,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btn_cart_purchase"
-                    android:layout_marginVertical="11dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="11dp"
                     android:background="@drawable/bg_main_color_button"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
