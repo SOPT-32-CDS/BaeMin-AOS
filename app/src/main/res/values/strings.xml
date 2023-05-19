@@ -18,4 +18,6 @@
     <string name="tv_cart_detail_total_price_title">결제예정금액</string>
     <string name="tv_cart_detail_total_price">80,600원</string>
     <string name="tv_cart_policy">(주)우아한 형제들은 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 따라서 (주)우아한형제들은 상품, 거래정보 및 거래에 대해서 책임을 지지 않습니다.</string>
+    <string name="item_cart_toolbar_home">메인화면</string>
+    <string name="item_cart_toolbar_person_plus">친구추가</string>
 </resources>
