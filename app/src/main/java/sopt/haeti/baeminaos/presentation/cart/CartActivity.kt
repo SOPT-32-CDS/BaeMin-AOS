@@ -19,12 +19,6 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         // 툴바의 뒤로가기 버튼 설정
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
-
-        // 이미지뷰 테두리 설정
-        binding.ivCartItem1Title.clipToOutline = true
-        binding.ivCartItem1Food.clipToOutline = true
-        binding.ivCartItem2Title.clipToOutline = true
-        binding.ivCartItem2Food.clipToOutline = true
     }
 
     // 툴바에 아이템 설정
