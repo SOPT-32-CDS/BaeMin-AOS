@@ -3,6 +3,7 @@ package sopt.haeti.baeminaos.presentation.cart
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.CartItemData
 import sopt.haeti.baeminaos.databinding.ActivityCartBinding
@@ -26,7 +27,16 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
 
         // 임시 데이터클래스 & 데이터 설정
-        val mockCartItemData = CartItemData(1,"모듬초밥", 12000, "연어 10피스", 2)
+        var mockCartItemData = CartItemData(1,"모듬초밥", 12000, "연어 10피스", 2)
+
+        // 서버통신 못받으면 빈 리스트 말고 아예 틀 안보이도록 설정
+        if (mockCartItemData == null) {
+            with(binding) {
+                viewCartItem1.visibility = View.GONE
+                dividerCart2.visibility = View.GONE
+            }
+        }
+
         // 아이템 데이터 삽입
         with(binding) {
             tvCartItem1Title.text = mockCartItemData.itemName
@@ -39,11 +49,16 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
         // 총 주문금액 변경
         with(binding) {
-            val itemTotalPrice = 26600 + itemOneTotalPrice
+            val itemTotalPrice = itemOneTotalPrice + 26600
             tvCartDetailPrice.text = moneyFormat(itemTotalPrice)
             val itemTotalPriceWithTip = itemTotalPrice + 2000
             tvCartDetailTotalPrice.text = moneyFormat(itemTotalPriceWithTip)
             tvCartPurchasePrice.text = moneyFormat(itemTotalPriceWithTip)
+        }
+
+        // 삭제 버튼 구현
+        binding.btnCartItem1Delete.setOnClickListener {
+            // 여기에 서버 통신 DELETE 구현
         }
     }
 
