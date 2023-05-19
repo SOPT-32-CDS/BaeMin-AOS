@@ -94,10 +94,4 @@
         <item name="cornerSize">10%</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder" parent="">
-        <item name="cornerSize">10%</item>
-        <item name="strokeColor">@color/gray2</item>
-        <item name="strokeWidth">1dp</item>
-    </style>
-
 </resources>

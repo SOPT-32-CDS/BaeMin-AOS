@@ -72,7 +72,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp"
                         tools:src="@drawable/ic_launcher_background" />
@@ -137,7 +137,7 @@
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp"
                         tools:src="@drawable/ic_launcher_background" />
@@ -303,7 +303,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp" />
 
@@ -369,7 +369,7 @@
                         android:src="@drawable/img_cart_item_2_menu"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent.greyBorder"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp" />
 
@@ -642,6 +642,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_cart_detail_total_price"
                         style="@style/TextAppearance.Pretendard.SemiBold.Body2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -709,6 +710,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_cart_purchase_price"
                         style="@style/TextAppearance.Pretendard.SemiBold.Body2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
