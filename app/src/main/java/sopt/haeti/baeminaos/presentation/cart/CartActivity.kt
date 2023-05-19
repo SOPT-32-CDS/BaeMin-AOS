@@ -13,8 +13,6 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        Timber.plant(Timber.DebugTree())
-
         // 툴바 설정
         setSupportActionBar(binding.toolbarCart)
         supportActionBar?.setDisplayShowTitleEnabled(false)
