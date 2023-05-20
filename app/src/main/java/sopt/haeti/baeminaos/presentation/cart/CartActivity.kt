@@ -17,7 +17,13 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     private var itemOneTotalPrice = 0
 
     // 임시 데이터클래스 & 데이터 설정
-    var mockCartItemData = CartItemData(1,"모듬초밥", 12000, "연어 10피스", 2)
+    private var mockCartItemData = CartItemData(
+        1,
+        "[갓성비]모듬초밥(10P)+미니우동",
+        18000,
+        "· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)",
+        2
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +46,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
         // 아이템 데이터 삽입
         with(binding) {
-            tvCartItem1Title.text = mockCartItemData.itemName
+            tvCartItem1Menu.text = mockCartItemData.itemName
             tvCartItem1Option.text = mockCartItemData.options
         }
 
@@ -57,16 +63,22 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
                 // 여기에 UPDATE 서버 통신
             }
             btnCartItem1NumberMinus.setOnClickListener {
-                itemOneCount -= 1
-                tvCartItem1Number.text = itemOneCount.toString()
-                changePrice()
-                // 여기에 UPDATE 서버 통신
+                if (itemOneCount > 1) {
+                    itemOneCount -= 1
+                    tvCartItem1Number.text = itemOneCount.toString()
+                    changePrice()
+                    // 여기에 UPDATE 서버 통신
+                }
             }
         }
 
         // 삭제 버튼 구현
         binding.btnCartItem1Delete.setOnClickListener {
             // 여기에 서버 통신 DELETE 구현
+            with(binding) {
+                viewCartItem1.visibility = View.GONE
+                dividerCart2.visibility = View.GONE
+            }
             // 여기에 UPDATE 서버 통신
         }
     }
@@ -108,7 +120,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     }
 
     // 총 주문금액 변경
-    private fun setTotalPrice () {
+    private fun setTotalPrice() {
         with(binding) {
             val itemTotalPrice = itemOneTotalPrice + 26600
             tvCartDetailPrice.text = moneyFormat(itemTotalPrice)

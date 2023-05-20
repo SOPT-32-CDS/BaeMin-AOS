@@ -75,7 +75,7 @@
                         app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp"
-                        tools:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/img_cart_item_1_store"/>
 
                     <TextView
                         android:id="@+id/tv_cart_item_1_title"
@@ -86,7 +86,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/iv_cart_item_1_title"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="정담초밥 송파점" />
+                        android:text="정담초밥 송파점" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,7 +108,7 @@
                     app:layout_constraintTop_toBottomOf="@id/divider_cart_part_1">
 
                     <TextView
-                        android:id="@+id/tv_cart_item_1_store"
+                        android:id="@+id/tv_cart_item_1_menu"
                         style="@style/TextAppearance.Pretendard.SemiBold.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                         app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                         app:strokeColor="@color/gray2"
                         app:strokeWidth="2dp"
-                        tools:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/img_cart_item_1_menu"/>
 
                     <TextView
                         android:id="@+id/tv_cart_item_1_option"
@@ -338,7 +338,7 @@
                     app:layout_constraintTop_toBottomOf="@id/divider_cart_part_2">
 
                     <TextView
-                        android:id="@+id/tv_cart_item_2_store"
+                        android:id="@+id/tv_cart_item_2_menu"
                         style="@style/TextAppearance.Pretendard.SemiBold.H3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
