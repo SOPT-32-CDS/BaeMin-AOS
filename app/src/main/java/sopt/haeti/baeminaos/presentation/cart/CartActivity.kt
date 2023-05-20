@@ -12,12 +12,16 @@ import timber.log.Timber
 import java.text.DecimalFormat
 
 class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart) {
+
+    private var itemOneCount = 0
+    private var itemOneTotalPrice = 0
+
+    // 임시 데이터클래스 & 데이터 설정
+    var mockCartItemData = CartItemData(1,"모듬초밥", 12000, "연어 10피스", 2)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        var itemOneCount = 0
-        var itemOneTotalPrice = 0
 
         // 툴바 설정
         setSupportActionBar(binding.toolbarCart)
@@ -25,9 +29,6 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         // 툴바의 뒤로가기 버튼 설정
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
-
-        // 임시 데이터클래스 & 데이터 설정
-        var mockCartItemData = CartItemData(1,"모듬초밥", 12000, "연어 10피스", 2)
 
         // 서버통신 못받으면 빈 리스트 말고 아예 틀 안보이도록 설정
         if (mockCartItemData == null) {
@@ -41,24 +42,32 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         with(binding) {
             tvCartItem1Title.text = mockCartItemData.itemName
             tvCartItem1Option.text = mockCartItemData.options
-            itemOneCount = mockCartItemData.count
-            tvCartItem1Number.text = itemOneCount.toString()
-            itemOneTotalPrice = mockCartItemData.price * mockCartItemData.count
-            tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
         }
 
-        // 총 주문금액 변경
+        // 금액 설정
+        setPrice()
+        setTotalPrice()
+
+        // 수량 변경 버튼 구현
         with(binding) {
-            val itemTotalPrice = itemOneTotalPrice + 26600
-            tvCartDetailPrice.text = moneyFormat(itemTotalPrice)
-            val itemTotalPriceWithTip = itemTotalPrice + 2000
-            tvCartDetailTotalPrice.text = moneyFormat(itemTotalPriceWithTip)
-            tvCartPurchasePrice.text = moneyFormat(itemTotalPriceWithTip)
+            btnCartItem1NumberPlus.setOnClickListener {
+                itemOneCount += 1
+                tvCartItem1Number.text = itemOneCount.toString()
+                changePrice()
+                // 여기에 UPDATE 서버 통신
+            }
+            btnCartItem1NumberMinus.setOnClickListener {
+                itemOneCount -= 1
+                tvCartItem1Number.text = itemOneCount.toString()
+                changePrice()
+                // 여기에 UPDATE 서버 통신
+            }
         }
 
         // 삭제 버튼 구현
         binding.btnCartItem1Delete.setOnClickListener {
             // 여기에 서버 통신 DELETE 구현
+            // 여기에 UPDATE 서버 통신
         }
     }
 
@@ -85,7 +94,36 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
     private fun moneyFormat(money: Int): String {
         val moneyFormat = DecimalFormat("#,###")
-        val wonFormat = moneyFormat.format(money) + "원"
-        return wonFormat
+        return moneyFormat.format(money) + "원"
+    }
+
+    // 수량에 따른 금액 설정
+    private fun setPrice() {
+        with(binding) {
+            itemOneCount = mockCartItemData.count
+            tvCartItem1Number.text = itemOneCount.toString()
+            itemOneTotalPrice = mockCartItemData.price * mockCartItemData.count
+            tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
+        }
+    }
+
+    // 총 주문금액 변경
+    private fun setTotalPrice () {
+        with(binding) {
+            val itemTotalPrice = itemOneTotalPrice + 26600
+            tvCartDetailPrice.text = moneyFormat(itemTotalPrice)
+            val itemTotalPriceWithTip = itemTotalPrice + 2000
+            tvCartDetailTotalPrice.text = moneyFormat(itemTotalPriceWithTip)
+            tvCartPurchasePrice.text = moneyFormat(itemTotalPriceWithTip)
+        }
+    }
+
+    private fun changePrice() {
+        with(binding) {
+            tvCartItem1Number.text = itemOneCount.toString()
+            itemOneTotalPrice = mockCartItemData.price * itemOneCount
+            tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
+            setTotalPrice()
+        }
     }
 }
