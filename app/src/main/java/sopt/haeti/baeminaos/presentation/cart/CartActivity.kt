@@ -8,6 +8,7 @@ import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.CartItemData
 import sopt.haeti.baeminaos.databinding.ActivityCartBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
+import sopt.haeti.baeminaos.util.extension.visible
 import timber.log.Timber
 import java.text.DecimalFormat
 
@@ -24,6 +25,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         "· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)",
         2
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -75,8 +77,8 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         binding.btnCartItem1Delete.setOnClickListener {
             // 여기에 서버 통신 DELETE 구현
             with(binding) {
-                viewCartItem1.visibility = View.GONE
-                dividerCart2.visibility = View.GONE
+                viewCartItem1.visible(false)
+                dividerCart2.visible(false)
             }
             // 여기에 UPDATE 서버 통신
         }
