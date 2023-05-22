@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">BaeminAOS</string>
+    <string name="price_kr">가격</string>
+    <string name="choice_kr">선택</string>
+    <string name="menu_main_image">menu_main_image</string>
+    <string name="best_menu_image">best_menu_image</string>
     <string name="tv_cart_toolbar_title">장바구니</string>
     <string name="btn_cart_option_change">옵션변경</string>
     <string name="tv_cart_more">더 담으러 가기</string>

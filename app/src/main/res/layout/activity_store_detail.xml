@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="169dp"
+                    android:background="@color/gray3"
+                    android:src="@drawable/ic_store_detail_example"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/menu_main_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_best_menu"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="18dp"
+                    android:contentDescription="@string/best_menu_image"
+                    android:src="@drawable/ic_best_menu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_menu" />
+
+                <!-- TextView 높이? 조정해야됨-->
+                <TextView
+                    android:id="@+id/tv_menu_name"
+                    style="@style/TextAppearance.Pretendard.SemiBold.Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="26dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_best_menu"
+                    app:layout_constraintTop_toBottomOf="@id/iv_menu"
+                    android:text="[커플주문율1위]2인세트A+미니우동2" />
+
+
+                <TextView
+                    android:id="@+id/tv_menu_description"
+                    style="@style/TextAppearance.Pretendard.Regular.Body2"
+                    android:textColor="@color/gray1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    app:layout_constraintEnd_toEndOf="@id/tv_menu_name"
+                    app:layout_constraintStart_toStartOf="@id/iv_best_menu"
+                    app:layout_constraintTop_toBottomOf="@id/tv_menu_name"
+                    android:text="초밥24p+날치알대마끼2p+고로케2p \n(흰살생선2p, 연어2p, 토핑연어2p,초새우2p,생새우2p, 간장새우2p,한치2p,계란2p,소고기 스테이크)" />
+
+
+                <TextView
+                    android:id="@+id/tv_base_price_kr"
+                    style="@style/TextAppearance.Pretendard.SemiBold.H3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="49dp"
+                    android:text="@string/price_kr"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_menu_description" />
+
+                <TextView
+                    android:id="@+id/tv_base_price"
+                    style="@style/TextAppearance.Pretendard.SemiBold.H3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_base_price_kr"
+                    android:text="34,000" />
+
+                <View
+                    android:id="@+id/divider_1"
+                    android:layout_width="0dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@color/gray3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_base_price_kr" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_option"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider_1"
+                    tools:listitem="@layout/item_store_option" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_count_kr"
+                        style="@style/TextAppearance.Pretendard.SemiBold.H3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="21dp"
+                        android:text="수량"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="132dp"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="18dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/background_count"
+                        android:padding="9dp"
+                        app:layout_constraintBottom_toTopOf="@id/divider_3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/btn_minus"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_minus"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_count"
+                            style="@style/TextAppearance.Pretendard.SemiBold.Body2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/btn_plus"
+                            app:layout_constraintStart_toEndOf="@id/btn_minus"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="1개" />
+
+                        <ImageView
+                            android:id="@+id/btn_plus"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_plus"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/divider_3"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="68dp"
+                        android:background="@color/gray2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="18dp"
+                        android:fontFamily="@font/pretendard_regular_font"
+                        android:text="배달최소주문금액"
+                        android:textColor="@color/gray1"
+                        android:textFontWeight="500"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider_3" />
+
+                    <TextView
+                        android:id="@+id/tv_min_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginBottom="17dp"
+                        android:fontFamily="@font/pretendard_regular_font"
+                        android:textColor="@color/black"
+                        android:textFontWeight="500"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView"
+                        android:text="15,000원" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/btn_add_price"
+                        android:layout_width="235dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="11dp"
+                        android:backgroundTint="@color/main_color"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider_3">
+
+                        <TextView
+                            android:id="@+id/tv_add_price"
+                            style="@style/TextAppearance.Pretendard.SemiBold.H3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:text="41,000원 담기" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
