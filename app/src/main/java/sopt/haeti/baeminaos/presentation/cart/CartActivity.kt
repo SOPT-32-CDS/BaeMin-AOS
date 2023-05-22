@@ -24,7 +24,6 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         "· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)",
         2
     )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
