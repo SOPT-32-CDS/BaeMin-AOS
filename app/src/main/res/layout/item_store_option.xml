@@ -12,7 +12,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             style="@style/TextAppearance.Pretendard.SemiBold.H3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,15 +23,15 @@
             tools:text="사이드 추가 선택" />
 
         <TextView
-            android:id="@+id/tv_max_count"
+            android:id="@+id/tv_description"
             style="@style/TextAppearance.Pretendard.Regular.Body3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_marginBottom="11dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
             tools:text="최대 6개 선택" />
 
         <com.google.android.material.card.MaterialCardView
@@ -42,7 +42,7 @@
             app:cardBackgroundColor="@color/gray3"
             app:cardCornerRadius="9.33dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="@id/tv_name"
             app:strokeColor="@color/gray3"
             app:strokeWidth="0dp">
 

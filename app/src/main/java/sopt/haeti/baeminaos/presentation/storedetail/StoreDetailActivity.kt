@@ -33,6 +33,7 @@ class StoreDetailActivity : BindingActivity<ActivityStoreDetailBinding>(R.layout
             ),
         )
 
+        //recyclerview divider
         val decoration = DividerItemDecoration(this, VERTICAL)
 
         optionRVAdapter = OptionRVAdapter()

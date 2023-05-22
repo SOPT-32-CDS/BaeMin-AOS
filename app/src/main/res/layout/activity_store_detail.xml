@@ -30,8 +30,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="169dp"
                     android:background="@color/gray3"
+                    android:src="@drawable/ic_store_detail_example"
+                    android:scaleType="centerCrop"
                     android:contentDescription="@string/menu_main_image"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <ImageView
                     android:id="@+id/iv_best_menu"
@@ -59,8 +62,9 @@
 
 
                 <TextView
-                    android:id="@+id/tv_menu_detail"
+                    android:id="@+id/tv_menu_description"
                     style="@style/TextAppearance.Pretendard.Regular.Body2"
+                    android:textColor="@color/gray1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -71,7 +75,7 @@
 
 
                 <TextView
-                    android:id="@+id/tv_price_kr"
+                    android:id="@+id/tv_base_price_kr"
                     style="@style/TextAppearance.Pretendard.SemiBold.H3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -79,16 +83,16 @@
                     android:layout_marginTop="49dp"
                     android:text="@string/price_kr"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_menu_detail" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_menu_description" />
 
                 <TextView
-                    android:id="@+id/tv_price"
+                    android:id="@+id/tv_base_price"
                     style="@style/TextAppearance.Pretendard.SemiBold.H3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="18dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_price_kr"
+                    app:layout_constraintTop_toTopOf="@id/tv_base_price_kr"
                     tools:text="34,000" />
 
                 <View
@@ -99,7 +103,7 @@
                     android:background="@color/gray3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_price_kr" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_base_price_kr" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_option"

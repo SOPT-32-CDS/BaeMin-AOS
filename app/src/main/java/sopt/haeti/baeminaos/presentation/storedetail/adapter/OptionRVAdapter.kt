@@ -21,8 +21,8 @@ class OptionRVAdapter() : ListAdapter<StoreDetailOptionDataClass, OptionRVAdapte
 
             fun bind(item : StoreDetailOptionDataClass) {
 
-                binding.tvTitle.text = item.title
-                binding.tvMaxCount.text = item.maxCount
+                binding.tvName.text = item.title
+                binding.tvDescription.text = item.maxCount
 
                 val choiceAdapter = ChoiceRVAdapter()
 

@@ -12,8 +12,17 @@ class ChoiceRVAdapter() : ListAdapter<StoreDetailChoiceDataClass, ChoiceRVAdapte
 
     class ViewHolder(private val binding : ItemStoreChoiceBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item: StoreDetailChoiceDataClass) {
-            binding.tvOption.text = item.title
+            binding.tvName.text = item.title
             binding.tvPrice.text = "+${item.price}원"
+
+            //아이템 클릭 시 체크박스 상태 바뀜
+            binding.root.setOnClickListener {
+                binding.checkbox.isChecked = !binding.checkbox.isChecked
+
+                if(binding.checkbox.isChecked) {
+
+                }
+            }
         }
     }
 

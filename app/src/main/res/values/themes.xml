@@ -10,7 +10,8 @@
         <item name="colorSecondaryVariant">@color/gray2</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -32,6 +33,7 @@
 
     <style name="TextAppearance.Pretendard.SemiBold" parent="">
         <item name="android:fontFamily">@font/pretendard_semibold_font</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextAppearance.Pretendard.SemiBold.Title">
@@ -64,6 +66,7 @@
 
     <style name="TextAppearance.Pretendard.Regular" parent="">
         <item name="android:fontFamily">@font/pretendard_regular_font</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="TextAppearance.Pretendard.Regular.Body1">
