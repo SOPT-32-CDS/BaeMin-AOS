@@ -12,7 +12,6 @@ class HomeBannerAdapter :
             onItemsTheSame = { old, new -> old == new })
     ) {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
         val binding: ItemMainBannerBinding =
             ItemMainBannerBinding.inflate(LayoutInflater.from(parent.context), parent, false)

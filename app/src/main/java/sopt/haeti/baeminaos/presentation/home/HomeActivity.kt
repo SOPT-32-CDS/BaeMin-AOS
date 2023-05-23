@@ -3,6 +3,7 @@ package sopt.haeti.baeminaos.presentation.home
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.viewpager2.widget.ViewPager2
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.mockBannerItemList
 import sopt.haeti.baeminaos.databinding.ActivityHomeBinding
@@ -22,6 +23,15 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         binding.viewPagerMainBanner.adapter = HomeBannerAdapter().apply {
             submitList(mockBannerItemList)
         }
+
+        // 배너 인디케이터 설정
+        binding.tvMainIndicatorTotal.text = mockBannerItemList.size.toString()
+        binding.viewPagerMainBanner.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.tvMainIndicatorCurrent.text = (position + 1).toString()
+            }
+        })
     }
 
     // 툴바에 아이템 설정

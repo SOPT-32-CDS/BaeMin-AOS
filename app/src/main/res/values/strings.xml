@@ -26,4 +26,7 @@
     <string name="item_cart_toolbar_person_plus">친구추가</string>
     <string name="tv_main_toolbar_title">배민</string>
     <string name="tv_main_mock_address">송파구 올림픽로 135</string>
+    <string name="tv_main_indicator_current">1</string>
+    <string name="tv_main_indicator_slash">/</string>
+    <string name="tv_main_indicator_total">6</string>
 </resources>
