@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import sopt.haeti.baeminaos.R
+import sopt.haeti.baeminaos.data.local.mockBannerItemList
 import sopt.haeti.baeminaos.databinding.ActivityHomeBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
 import timber.log.Timber
@@ -16,6 +17,11 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         // 툴바 설정
         setSupportActionBar(binding.toolbarMain)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        // 배너 아이템 설정
+        binding.viewPagerMainBanner.adapter = HomeBannerAdapter().apply {
+            submitList(mockBannerItemList)
+        }
     }
 
     // 툴바에 아이템 설정
