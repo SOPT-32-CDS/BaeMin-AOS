@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.mockBannerItemList
+import sopt.haeti.baeminaos.data.local.mockTipTextList
 import sopt.haeti.baeminaos.databinding.ActivityHomeBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
 import timber.log.Timber
@@ -32,6 +33,11 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
                 binding.tvMainIndicatorCurrent.text = (position + 1).toString()
             }
         })
+
+        // 팁 아이템 설정
+        binding.rcvMainTip.adapter = HomeTipAdapter().apply {
+            submitList(mockTipTextList)
+        }
     }
 
     // 툴바에 아이템 설정
