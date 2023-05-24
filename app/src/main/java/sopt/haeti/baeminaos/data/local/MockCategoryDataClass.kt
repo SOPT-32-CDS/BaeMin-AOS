@@ -1,6 +1,8 @@
 package sopt.haeti.baeminaos.data.local
 
+import androidx.annotation.DrawableRes
+
 data class MockCategoryDataClass(
-    val image: Int,
+    @DrawableRes val image: Int,
     val name: String
 )
