@@ -25,10 +25,10 @@ class StoreActivity : BindingActivity<ActivityStoreBinding>(R.layout.activity_st
 
     private fun generateData(): List<StoreMenu> {
         val storeMenuList = mutableListOf<StoreMenu>()
-        for (i in 0..6) {
+        for (i in 0..5) {
 
             val innerItemList = mutableListOf<StoreMenuDetail>()
-            for (j in 0..3) {
+            for (j in 0..2) {
                 innerItemList.add(
                     j, StoreMenuDetail(
                         "[재주문 1위] 특초밥+미...",
