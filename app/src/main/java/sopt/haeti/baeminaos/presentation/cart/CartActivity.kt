@@ -3,8 +3,9 @@ package sopt.haeti.baeminaos.presentation.cart
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import sopt.haeti.baeminaos.R
-import sopt.haeti.baeminaos.data.local.CartItemData
+import sopt.haeti.baeminaos.data.remote.CartItemResponseDto
 import sopt.haeti.baeminaos.databinding.ActivityCartBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
 import sopt.haeti.baeminaos.util.extension.visible
@@ -15,15 +16,9 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
     private var itemOneCount = 0
     private var itemOneTotalPrice = 0
+    private var itemOnePrice = 0
 
-    // 임시 데이터클래스 & 데이터 설정
-    private var mockCartItemData = CartItemData(
-        1,
-        "[갓성비]모듬초밥(10P)+미니우동",
-        18000,
-        "· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)",
-        2
-    )
+    private val viewModel by viewModels<CartViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +29,22 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setToolbarWithBackIcon()
 
-        // 서버통신 못받으면 빈 리스트 말고 아예 틀 안보이도록 설정
-        if (mockCartItemData == null) {
-            deleteItem1View()
+        viewModel.getListFromServer()
+
+        // 뷰모델 observer 설정
+        viewModel.responseResult.observe(this) { responseResult ->
+            // 아이템 데이터 삽입 & 금액 설정
+            val firstCartStore = responseResult.data.cartStoreList[0]
+            val firstCartItem = firstCartStore.cartItemList[0]
+            setItem1Text(firstCartItem)
+            setPrice(firstCartItem)
+            setTotalPrice()
         }
 
-        // 아이템 데이터 삽입 & 금액 설정
-        setItem1Text()
-        setPrice()
-        setTotalPrice()
+        viewModel.errorResult.observe(this) { errorResult ->
+            // 서버 통신 못 받으면 빈 리스트 말고 아예 틀 안보이도록 설정
+            deleteItem1View()
+        }
 
         // 수량 변경 버튼 구현
         with(binding) {
@@ -65,11 +67,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         // 삭제 버튼 구현
         binding.btnCartItem1Delete.setOnClickListener {
             // 여기에 서버 통신 DELETE 구현
-            with(binding) {
-                viewCartItem1.visible(false)
-                dividerCart2.visible(false)
-            }
-            // 여기에 UPDATE 서버 통신
+            deleteItem1View()
         }
     }
 
@@ -101,11 +99,12 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     }
 
     // 수량에 따른 금액 설정
-    private fun setPrice() {
+    private fun setPrice(item: CartItemResponseDto.Cart.CartStore.CartItem) {
         with(binding) {
-            itemOneCount = mockCartItemData.count
+            itemOneCount = item.count
             tvCartItem1Number.text = itemOneCount.toString()
-            itemOneTotalPrice = mockCartItemData.price * mockCartItemData.count
+            itemOneTotalPrice = item.totalPrice
+            itemOnePrice = itemOneTotalPrice / itemOneCount
             tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
         }
     }
@@ -125,7 +124,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     private fun changePrice() {
         with(binding) {
             tvCartItem1Number.text = itemOneCount.toString()
-            itemOneTotalPrice = mockCartItemData.price * itemOneCount
+            itemOneTotalPrice = itemOnePrice * itemOneCount
             tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
             setTotalPrice()
         }
@@ -136,10 +135,10 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
     }
 
-    private fun setItem1Text() {
+    private fun setItem1Text(item: CartItemResponseDto.Cart.CartStore.CartItem) {
         with(binding) {
-            tvCartItem1Menu.text = mockCartItemData.itemName
-            tvCartItem1Option.text = mockCartItemData.options
+            tvCartItem1Menu.text = item.name
+            tvCartItem1Option.text = item.options
         }
     }
 

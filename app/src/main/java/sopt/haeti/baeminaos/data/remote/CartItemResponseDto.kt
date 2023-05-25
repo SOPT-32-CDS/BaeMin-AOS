@@ -3,13 +3,14 @@ package sopt.haeti.baeminaos.data.remote
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+@Serializable
 data class CartItemResponseDto(
     @SerialName("status")
     val status: Int,
     @SerialName("message")
     val message: String,
     @SerialName("data")
-    val data: List<Cart>
+    val data: Cart
 ) {
     @Serializable
     data class Cart(
@@ -39,6 +40,8 @@ data class CartItemResponseDto(
                 val cartItemId: Int,
                 @SerialName("name")
                 val name: String,
+                @SerialName("image")
+                val image: String,
                 @SerialName("total_price")
                 val totalPrice: Int,
                 @SerialName("options")
