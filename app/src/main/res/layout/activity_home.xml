@@ -123,34 +123,57 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcv_main_tip"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:id="@+id/view_main_content"
+                android:elevation="2dp"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_pager_main_banner"
-                tools:listitem="@layout/item_main_tip" />
+                app:layout_constraintTop_toBottomOf="@id/view_pager_main_banner">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcv_main_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_main_category"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="12dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_main_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_main_tip" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_main_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="12dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rcv_main_tip"
+                    app:spanCount="5"
+                    tools:itemCount="25"
+                    android:paddingBottom="12dp"
+                    tools:listitem="@layout/item_main_category">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/divider_main_1"
+                android:layout_width="wrap_content"
+                android:layout_height="12dp"
+                android:background="@color/gray3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rcv_main_tip"
-                app:spanCount="5">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                app:layout_constraintTop_toBottomOf="@id/view_main_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
