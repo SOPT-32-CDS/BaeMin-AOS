@@ -21,8 +21,10 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
     private val cartItemViewModel by viewModels<CartItemViewModel>()
     private val cartCountViewModel by viewModels<CartCountViewModel>()
+    private val cartDeleteViewModel by viewModels<CartDeleteViewModel>()
 
     private var itemId by Delegates.notNull<Int>()
+    private var cartId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +40,8 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
         cartItemViewModel.responseResult.observe(this) { responseResult ->
             // 아이템 데이터 삽입 & 금액 설정
-            val firstCartStore = responseResult.data.cartStoreList[0]
-            val firstCartItem = firstCartStore.cartItemList[0]
+            cartId = responseResult.data.cartId
+            val firstCartItem = responseResult.data.cartStoreList[0].cartItemList[0]
             itemId = firstCartItem.cartItemId
             setItem1Text(firstCartItem)
             setPrice(firstCartItem)
@@ -47,7 +49,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         }
         cartItemViewModel.errorResult.observe(this) { _ ->
             // 빈 리스트 말고 아예 틀 안보이도록 설정
-            deleteItem1View()
+            // deleteItem1View()
         }
 
         // 수량 변경 버튼 구현
@@ -56,21 +58,21 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
                 itemOneCount += 1
                 tvCartItem1Number.text = itemOneCount.toString()
                 changePrice()
-                cartCountViewModel.updateCountToServer(itemId,itemOneCount)
+                cartCountViewModel.updateCountToServer(itemId, itemOneCount)
             }
             btnCartItem1NumberMinus.setOnClickListener {
                 if (itemOneCount > 1) {
                     itemOneCount -= 1
                     tvCartItem1Number.text = itemOneCount.toString()
                     changePrice()
-                    cartCountViewModel.updateCountToServer(itemId,itemOneCount)
+                    cartCountViewModel.updateCountToServer(itemId, itemOneCount)
                 }
             }
         }
 
         // 삭제 버튼 구현
         binding.btnCartItem1Delete.setOnClickListener {
-            // 여기에 서버 통신 DELETE 구현
+            cartDeleteViewModel.deleteItemFromServer(itemId)
             deleteItem1View()
         }
     }
