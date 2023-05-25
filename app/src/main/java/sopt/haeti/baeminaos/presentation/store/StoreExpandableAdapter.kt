@@ -11,7 +11,7 @@ import sopt.haeti.baeminaos.databinding.ItemStoreMenuBinding
 import sopt.haeti.baeminaos.util.ItemDiffCallback
 
 class StoreExpandableAdapter(
-    context: Context
+    context: Context, private val storeMenu: List<StoreMenu>
 ) : ListAdapter<StoreMenu, StoreExpandableAdapter.StoreMenuViewHolder>(
     ItemDiffCallback<StoreMenu>(
         onItemsTheSame = { old, new -> old.menuName == new.menuName },
@@ -20,7 +20,6 @@ class StoreExpandableAdapter(
 
     private val inflater by lazy { LayoutInflater.from(context) }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreMenuViewHolder {
         val binding = ItemStoreMenuBinding.inflate(inflater, parent, false)
         return StoreMenuViewHolder(binding)
@@ -28,19 +27,23 @@ class StoreExpandableAdapter(
 
 
     override fun onBindViewHolder(holder: StoreMenuViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        val context = holder.itemView.context
+        val innerAdapter = StoreMenuInnerAdapter(storeMenu[position].storeMenuDetail, context)
+        holder.onBind(getItem(position), innerAdapter)
     }
 
 
     class StoreMenuViewHolder(
         private val binding: ItemStoreMenuBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: StoreMenu) {
+        fun onBind(item: StoreMenu, innerAdapter: StoreMenuInnerAdapter) {
             binding.tvMenu.text = item.menuName
+            binding.rvMenuDetail.adapter = innerAdapter
             binding.executePendingBindings()
+            innerAdapter.submitList(item.storeMenuDetail)
 
             binding.root.setOnClickListener {
-                val show = toggleLayout(!item.isExpanded, it, binding.rvMenuDetail)
+                val show = toggleLayout(!item.isExpanded, binding.ivArrow, binding.rvMenuDetail)
                 item.isExpanded = show
             }
         }
