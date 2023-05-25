@@ -1,6 +1,5 @@
 package sopt.haeti.baeminaos.presentation.cart
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,7 @@ import retrofit2.Response
 import sopt.haeti.baeminaos.data.remote.CartItemResponseDto
 import sopt.haeti.baeminaos.module.ServicePool.cartService
 
-class CartViewModel : ViewModel() {
+class CartItemViewModel : ViewModel() {
     private val _responseResult: MutableLiveData<CartItemResponseDto> = MutableLiveData()
     val responseResult: LiveData<CartItemResponseDto> = _responseResult
 

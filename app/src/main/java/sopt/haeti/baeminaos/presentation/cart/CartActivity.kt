@@ -18,7 +18,8 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     private var itemOneTotalPrice = 0
     private var itemOnePrice = 0
 
-    private val viewModel by viewModels<CartViewModel>()
+    private val cartItemViewModel by viewModels<CartItemViewModel>()
+    private val cartCountViewModel by viewModels<CartCountViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +30,10 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         supportActionBar?.setDisplayShowTitleEnabled(false)
         setToolbarWithBackIcon()
 
-        viewModel.getListFromServer()
+        // 장바구니에 아이템 담기
+        cartItemViewModel.getListFromServer()
 
-        // 뷰모델 observer 설정
-        viewModel.responseResult.observe(this) { responseResult ->
+        cartItemViewModel.responseResult.observe(this) { responseResult ->
             // 아이템 데이터 삽입 & 금액 설정
             val firstCartStore = responseResult.data.cartStoreList[0]
             val firstCartItem = firstCartStore.cartItemList[0]
@@ -40,10 +41,9 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
             setPrice(firstCartItem)
             setTotalPrice()
         }
-
-        viewModel.errorResult.observe(this) { errorResult ->
-            // 서버 통신 못 받으면 빈 리스트 말고 아예 틀 안보이도록 설정
-            deleteItem1View()
+        cartItemViewModel.errorResult.observe(this) { _ ->
+            // 빈 리스트 말고 아예 틀 안보이도록 설정
+            // deleteItem1View()
         }
 
         // 수량 변경 버튼 구현
@@ -52,14 +52,14 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
                 itemOneCount += 1
                 tvCartItem1Number.text = itemOneCount.toString()
                 changePrice()
-                // 여기에 UPDATE 서버 통신
+                cartCountViewModel.updateCountToServer(52,itemOneCount)
             }
             btnCartItem1NumberMinus.setOnClickListener {
                 if (itemOneCount > 1) {
                     itemOneCount -= 1
                     tvCartItem1Number.text = itemOneCount.toString()
                     changePrice()
-                    // 여기에 UPDATE 서버 통신
+                    cartCountViewModel.updateCountToServer(52,itemOneCount)
                 }
             }
         }
