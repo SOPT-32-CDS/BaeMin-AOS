@@ -23,6 +23,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_menu_detail_name"
             style="@style/TextAppearance.Pretendard.SemiBold.H3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
