@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/iv_best_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="24dp"
             android:src="@drawable/ic_best_menu"
@@ -67,6 +67,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_best_menu_price" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_menu_detail"
             android:layout_width="112dp"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
