@@ -286,6 +286,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:background="@color/white"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/cl_store_top"
                     tools:listitem="@layout/item_store_menu" />
