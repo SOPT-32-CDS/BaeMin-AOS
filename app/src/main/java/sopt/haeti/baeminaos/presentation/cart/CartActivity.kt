@@ -11,6 +11,7 @@ import sopt.haeti.baeminaos.util.base.BindingActivity
 import sopt.haeti.baeminaos.util.extension.visible
 import timber.log.Timber
 import java.text.DecimalFormat
+import kotlin.properties.Delegates
 
 class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart) {
 
@@ -20,6 +21,8 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
     private val cartItemViewModel by viewModels<CartItemViewModel>()
     private val cartCountViewModel by viewModels<CartCountViewModel>()
+
+    private var itemId by Delegates.notNull<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +40,14 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
             // 아이템 데이터 삽입 & 금액 설정
             val firstCartStore = responseResult.data.cartStoreList[0]
             val firstCartItem = firstCartStore.cartItemList[0]
+            itemId = firstCartItem.cartItemId
             setItem1Text(firstCartItem)
             setPrice(firstCartItem)
             setTotalPrice()
         }
         cartItemViewModel.errorResult.observe(this) { _ ->
             // 빈 리스트 말고 아예 틀 안보이도록 설정
-            // deleteItem1View()
+            deleteItem1View()
         }
 
         // 수량 변경 버튼 구현
@@ -52,14 +56,14 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
                 itemOneCount += 1
                 tvCartItem1Number.text = itemOneCount.toString()
                 changePrice()
-                cartCountViewModel.updateCountToServer(52,itemOneCount)
+                cartCountViewModel.updateCountToServer(itemId,itemOneCount)
             }
             btnCartItem1NumberMinus.setOnClickListener {
                 if (itemOneCount > 1) {
                     itemOneCount -= 1
                     tvCartItem1Number.text = itemOneCount.toString()
                     changePrice()
-                    cartCountViewModel.updateCountToServer(52,itemOneCount)
+                    cartCountViewModel.updateCountToServer(itemId,itemOneCount)
                 }
             }
         }
