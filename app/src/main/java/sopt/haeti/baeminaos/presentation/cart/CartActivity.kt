@@ -22,6 +22,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
     private val cartItemViewModel by viewModels<CartItemViewModel>()
     private val cartCountViewModel by viewModels<CartCountViewModel>()
     private val cartDeleteViewModel by viewModels<CartDeleteViewModel>()
+    private val cartOrderViewModel by viewModels<CartOrderViewModel>()
 
     private var itemId by Delegates.notNull<Int>()
     private var cartId by Delegates.notNull<Int>()
@@ -49,7 +50,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         }
         cartItemViewModel.errorResult.observe(this) { _ ->
             // 빈 리스트 말고 아예 틀 안보이도록 설정
-            // deleteItem1View()
+            deleteItem1View()
         }
 
         // 수량 변경 버튼 구현
@@ -74,6 +75,11 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         binding.btnCartItem1Delete.setOnClickListener {
             cartDeleteViewModel.deleteItemFromServer(itemId)
             deleteItem1View()
+        }
+
+        // 주문 버튼 구현
+        binding.btnCartPurchase.setOnClickListener {
+            cartOrderViewModel.orderItemToServer(cartId)
         }
     }
 

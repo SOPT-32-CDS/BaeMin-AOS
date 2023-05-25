@@ -5,11 +5,9 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
+import retrofit2.http.POST
 import retrofit2.http.Path
-import sopt.haeti.baeminaos.data.remote.CartCountRequestDto
-import sopt.haeti.baeminaos.data.remote.CartCountResponseDto
-import sopt.haeti.baeminaos.data.remote.CartDeleteResponseDto
-import sopt.haeti.baeminaos.data.remote.CartItemResponseDto
+import sopt.haeti.baeminaos.data.remote.*
 
 interface CartService {
 
@@ -25,4 +23,9 @@ interface CartService {
     fun deleteCart(
         @Path("cartItemId") cartItemId: Int
     ): Call<CartDeleteResponseDto>
+
+    @POST("/cart/{cartId}")
+    fun order(
+        @Path("cartId") cartId: Int
+    ): Call<CartOrderResponseDto>
 }
