@@ -30,11 +30,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="169dp"
                     android:background="@color/gray3"
-                    android:src="@drawable/ic_store_detail_example"
-                    android:scaleType="centerCrop"
                     android:contentDescription="@string/menu_main_image"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_store_detail_example"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/iv_best_menu"
@@ -58,20 +57,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/iv_best_menu"
                     app:layout_constraintTop_toBottomOf="@id/iv_menu"
-                    android:text="[커플주문율1위]2인세트A+미니우동2" />
+                    tools:text="[커플주문율1위]2인세트A+미니우동2" />
 
 
                 <TextView
                     android:id="@+id/tv_menu_description"
                     style="@style/TextAppearance.Pretendard.Regular.Body2"
-                    android:textColor="@color/gray1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
+                    android:textColor="@color/gray1"
                     app:layout_constraintEnd_toEndOf="@id/tv_menu_name"
                     app:layout_constraintStart_toStartOf="@id/iv_best_menu"
                     app:layout_constraintTop_toBottomOf="@id/tv_menu_name"
-                    android:text="초밥24p+날치알대마끼2p+고로케2p \n(흰살생선2p, 연어2p, 토핑연어2p,초새우2p,생새우2p, 간장새우2p,한치2p,계란2p,소고기 스테이크)" />
+                    tools:text="초밥24p+날치알대마끼2p+고로케2p \n(흰살생선2p, 연어2p, 토핑연어2p,초새우2p,생새우2p, 간장새우2p,한치2p,계란2p,소고기 스테이크)" />
 
 
                 <TextView
@@ -93,7 +92,7 @@
                     android:layout_marginEnd="18dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_base_price_kr"
-                    android:text="34,000" />
+                    tools:text="34,000" />
 
                 <View
                     android:id="@+id/divider_1"
@@ -208,13 +207,13 @@
                         android:layout_marginTop="1dp"
                         android:layout_marginBottom="17dp"
                         android:fontFamily="@font/pretendard_regular_font"
+                        android:text="15,000원"
                         android:textColor="@color/black"
                         android:textFontWeight="500"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textView"
-                        android:text="15,000원" />
+                        app:layout_constraintTop_toBottomOf="@id/textView" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btn_add_price"
@@ -234,8 +233,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
-                            android:text="41,000원 담기" />
+                            android:text="41,000원 담기"
+                            android:textColor="@color/white" />
 
                     </androidx.cardview.widget.CardView>
 
