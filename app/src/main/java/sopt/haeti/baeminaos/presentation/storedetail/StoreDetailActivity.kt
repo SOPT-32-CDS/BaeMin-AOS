@@ -29,8 +29,6 @@ class StoreDetailActivity :
 
     var count = 1
     lateinit var imageUri: String
-    lateinit var totalOption: String
-
     private val storeDetailViewModel by viewModels<StoreDetailViewModel>()
     private val cartItemAddViewModel by viewModels<CartItemAddViewModel>()
 
@@ -70,7 +68,7 @@ class StoreDetailActivity :
     }
 
     override fun addOption(option: String) {
-        totalOption += ", $option"
+
     }
 
     //서버에서 메뉴 정보 가져오기
@@ -101,7 +99,7 @@ class StoreDetailActivity :
             binding.tvMenuName.text.toString(),
             binding.ivMenu.toString(),
             binding.tvAddPrice.text.replace("[^0-9]".toRegex(), "").toInt(),
-            totalOption,
+            "추가된 옵션들",
             binding.tvCount.text.replace("[^0-9]".toRegex(), "").toInt()
         )
 
