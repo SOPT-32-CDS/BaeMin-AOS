@@ -29,4 +29,12 @@
     <string name="tv_main_indicator_current">1</string>
     <string name="tv_main_indicator_slash">/</string>
     <string name="tv_main_indicator_total">6</string>
+    <string name="tv_main_horizontal_title">조리도 빠른 배민1 가게</string>
+    <string name="tv_main_horizontal_mock_store">에밀리아젤라또</string>
+    <string name="tv_main_horizontal_mock_rate">4.9</string>
+    <string name="tv_main_horizontal_minute">배달</string>
+    <string name="tv_main_horizontal_mock_minute">14~24분</string>
+    <string name="tv_main_horizontal_tip">배달팁</string>
+    <string name="tv_main_horizontal_mock_tip">0원~2,000원</string>
+    <string name="tv_main_horizontal_coupon">쿠폰</string>
 </resources>
