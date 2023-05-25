@@ -3,13 +3,13 @@ package sopt.haeti.baeminaos.presentation.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import sopt.haeti.baeminaos.data.local.MockCategoryDataClass
+import sopt.haeti.baeminaos.data.local.CategoryDataClass
 import sopt.haeti.baeminaos.databinding.ItemMainCategoryBinding
 import sopt.haeti.baeminaos.util.ItemDiffCallback
 
 class HomeCategoryAdapter :
-    ListAdapter<MockCategoryDataClass, HomeCategoryViewHolder>(
-        ItemDiffCallback<MockCategoryDataClass>(onContentsTheSame = { old, new -> old == new },
+    ListAdapter<CategoryDataClass, HomeCategoryViewHolder>(
+        ItemDiffCallback<CategoryDataClass>(onContentsTheSame = { old, new -> old == new },
             onItemsTheSame = { old, new -> old == new })
     ) {
 
