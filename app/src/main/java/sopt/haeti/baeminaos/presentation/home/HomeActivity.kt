@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.mockBannerItemList
 import sopt.haeti.baeminaos.data.local.mockCartegoryItemList
+import sopt.haeti.baeminaos.data.local.mockStoreList
 import sopt.haeti.baeminaos.data.local.mockTipTextList
 import sopt.haeti.baeminaos.databinding.ActivityHomeBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
@@ -43,6 +44,11 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         // 카테고리 아이템 설정
         binding.rcvMainCategory.adapter = HomeCategoryAdapter().apply {
             submitList(mockCartegoryItemList)
+        }
+
+        // 가로 가게리스트 설정
+        binding.rcvMainHorizontal.adapter = HomeHorizontalAdapter().apply {
+            submitList(mockStoreList)
         }
     }
 

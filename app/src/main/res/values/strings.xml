@@ -35,6 +35,6 @@
     <string name="tv_main_horizontal_minute">배달</string>
     <string name="tv_main_horizontal_mock_minute">14~24분</string>
     <string name="tv_main_horizontal_tip">배달팁</string>
-    <string name="tv_main_horizontal_mock_tip">0원~2,000원</string>
+    <string name="tv_main_horizontal_mock_tip">2,000원</string>
     <string name="tv_main_horizontal_coupon">쿠폰</string>
 </resources>
