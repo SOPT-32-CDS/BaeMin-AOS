@@ -3,11 +3,11 @@ package sopt.haeti.baeminaos.presentation.cart
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.CartItemData
 import sopt.haeti.baeminaos.databinding.ActivityCartBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
+import sopt.haeti.baeminaos.util.extension.visible
 import timber.log.Timber
 import java.text.DecimalFormat
 
@@ -24,6 +24,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         "· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)",
         2
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -31,25 +32,15 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         // 툴바 설정
         setSupportActionBar(binding.toolbarCart)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        // 툴바의 뒤로가기 버튼 설정
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
+        setToolbarWithBackIcon()
 
         // 서버통신 못받으면 빈 리스트 말고 아예 틀 안보이도록 설정
         if (mockCartItemData == null) {
-            with(binding) {
-                viewCartItem1.visibility = View.GONE
-                dividerCart2.visibility = View.GONE
-            }
+            deleteItem1View()
         }
 
-        // 아이템 데이터 삽입
-        with(binding) {
-            tvCartItem1Menu.text = mockCartItemData.itemName
-            tvCartItem1Option.text = mockCartItemData.options
-        }
-
-        // 금액 설정
+        // 아이템 데이터 삽입 & 금액 설정
+        setItem1Text()
         setPrice()
         setTotalPrice()
 
@@ -75,8 +66,8 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         binding.btnCartItem1Delete.setOnClickListener {
             // 여기에 서버 통신 DELETE 구현
             with(binding) {
-                viewCartItem1.visibility = View.GONE
-                dividerCart2.visibility = View.GONE
+                viewCartItem1.visible(false)
+                dividerCart2.visible(false)
             }
             // 여기에 UPDATE 서버 통신
         }
@@ -103,6 +94,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         return true
     }
 
+    // 금액 형식 설정
     private fun moneyFormat(money: Int): String {
         val moneyFormat = DecimalFormat("#,###")
         return moneyFormat.format(money) + "원"
@@ -129,12 +121,32 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
         }
     }
 
+    // 수량 변경 적용한 금액 재설정
     private fun changePrice() {
         with(binding) {
             tvCartItem1Number.text = itemOneCount.toString()
             itemOneTotalPrice = mockCartItemData.price * itemOneCount
             tvCartItem1Price.text = moneyFormat(itemOneTotalPrice)
             setTotalPrice()
+        }
+    }
+
+    private fun setToolbarWithBackIcon() {
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_back)
+    }
+
+    private fun setItem1Text() {
+        with(binding) {
+            tvCartItem1Menu.text = mockCartItemData.itemName
+            tvCartItem1Option.text = mockCartItemData.options
+        }
+    }
+
+    private fun deleteItem1View() {
+        with(binding) {
+            viewCartItem1.visible(false)
+            dividerCart2.visible(false)
         }
     }
 }
