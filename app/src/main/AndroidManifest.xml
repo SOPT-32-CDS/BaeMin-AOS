@@ -9,7 +9,7 @@
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_baemin_layer"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.BaeminAOS"
@@ -44,8 +44,12 @@
         <activity
             android:name=".presentation.store.StoreActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".presentation.OrderCompleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
