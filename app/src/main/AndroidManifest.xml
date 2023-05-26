@@ -45,7 +45,6 @@
             android:name=".presentation.store.StoreActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
         </activity>
     </application>
 
