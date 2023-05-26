@@ -10,6 +10,7 @@ import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.StoreMenuDetail
 import sopt.haeti.baeminaos.databinding.ItemStoreMenuDetailBinding
 import sopt.haeti.baeminaos.util.ItemDiffCallback
+import java.text.DecimalFormat
 
 class StoreMenuInnerAdapter(
     private val storeMenuInnerList: List<StoreMenuDetail>,
@@ -39,10 +40,17 @@ class StoreMenuInnerAdapter(
             binding.tvMenuDetailName.text = item.menuDetailName
             binding.ivBestMenu.load(R.drawable.ic_best_menu)
             binding.tvBestMenuDesc.text = item.menuDescription
-            binding.tvBestMenuPrice.text = item.menuPrice.toString()
+            binding.tvBestMenuPrice.text = moneyFormat(item.menuPrice)
             binding.ivMenuDetail.load(item.menuImage)
             binding.executePendingBindings()
 
         }
+
+        private fun moneyFormat(money: Int): String {
+            val moneyFormat = DecimalFormat("#,###")
+            return moneyFormat.format(money) + "원"
+        }
     }
+
+
 }
