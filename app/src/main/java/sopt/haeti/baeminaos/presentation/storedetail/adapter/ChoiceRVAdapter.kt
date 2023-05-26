@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import sopt.haeti.baeminaos.data.remote.StoreDetailData
 import sopt.haeti.baeminaos.databinding.ItemStoreChoiceBinding
+import sopt.haeti.baeminaos.presentation.storedetail.TotalOption
 import sopt.haeti.baeminaos.presentation.storedetail.TotalPrice
 import java.text.DecimalFormat
 
-class ChoiceRVAdapter(val totalPrice: TotalPrice) :
+class ChoiceRVAdapter(val totalPrice: TotalPrice, val totalOption: TotalOption) :
     ListAdapter<StoreDetailData.Data.OptionCategories.Options, ChoiceRVAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemStoreChoiceBinding) :
@@ -31,8 +32,10 @@ class ChoiceRVAdapter(val totalPrice: TotalPrice) :
 
                 if (binding.checkbox.isChecked) {
                     totalPrice.calcTotalPrice(item.price)
+                    totalOption.addOption(item.name + "(${itemPrice})")
                 } else {
                     totalPrice.calcTotalPrice((item.price) * (-1))
+                    totalOption.deleteOption(item.name + "(${itemPrice})")
                 }
             }
         }

@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import sopt.haeti.baeminaos.data.remote.StoreDetailData
 import sopt.haeti.baeminaos.databinding.ItemStoreOptionBinding
+import sopt.haeti.baeminaos.presentation.storedetail.TotalOption
 import sopt.haeti.baeminaos.presentation.storedetail.TotalPrice
 
-class OptionRVAdapter(val totalPrice: TotalPrice) :
+class OptionRVAdapter(val totalPrice: TotalPrice, val totalOption: TotalOption) :
     ListAdapter<StoreDetailData.Data.OptionCategories, OptionRVAdapter.ViewHolder>(diffUtil) {
 
     inner class ViewHolder(private val binding: ItemStoreOptionBinding) :
@@ -22,7 +23,7 @@ class OptionRVAdapter(val totalPrice: TotalPrice) :
             binding.tvDescription.text = item.description
 
             //옵션 선택 사항 recyclerView
-            val choiceAdapter = ChoiceRVAdapter(totalPrice)
+            val choiceAdapter = ChoiceRVAdapter(totalPrice, totalOption)
 
             item.options.let {
                 choiceAdapter.submitList(it)

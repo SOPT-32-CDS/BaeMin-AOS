@@ -5,11 +5,10 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import sopt.haeti.baeminaos.BuildConfig
-import sopt.haeti.baeminaos.presentation.storedetail.StoreDetailService
 
 object StoreDetailApiFactory {
 
-    private val BASE_URL = BuildConfig.BAEMIN_BASE_URL
+    private const val BASE_URL = BuildConfig.BASE_URL
 
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()

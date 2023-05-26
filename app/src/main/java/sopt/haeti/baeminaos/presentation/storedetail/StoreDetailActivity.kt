@@ -3,7 +3,6 @@ package sopt.haeti.baeminaos.presentation.storedetail
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.LinearLayout.VERTICAL
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,7 +33,8 @@ class StoreDetailActivity :
 
     var data = arrayListOf<StoreDetailData.Data.OptionCategories>()
     var basePrice by Delegates.notNull<Int>()
-
+    var baseOption = ""
+    var totalOption = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class StoreDetailActivity :
         //recyclerview divider
         val decoration = DividerItemDecoration(this, VERTICAL)
 
-        optionRVAdapter = OptionRVAdapter(this)
+        optionRVAdapter = OptionRVAdapter(this, this)
         binding.rvOption.apply {
             layoutManager = LinearLayoutManager(this@StoreDetailActivity)
             adapter = optionRVAdapter
@@ -64,11 +64,15 @@ class StoreDetailActivity :
     override fun calcTotalPrice(price: Int) {
         val basePrice = binding.tvAddPrice.text.replace("[^0-9]".toRegex(), "").toInt()
         val totalPrice = basePrice + price
-        binding.tvAddPrice.text = moneyFormat(totalPrice)
+        binding.tvAddPrice.text = "${moneyFormat(totalPrice)} 담기"
     }
 
     override fun addOption(option: String) {
+        totalOption = baseOption + option
+    }
 
+    override fun deleteOption(option: String) {
+        totalOption = totalOption.replace(option, "")
     }
 
     //서버에서 메뉴 정보 가져오기
@@ -78,39 +82,28 @@ class StoreDetailActivity :
 
         storeDetailViewModel.responseResult.observe(this) { responseResult ->
             binding.tvMenuName.text = responseResult.data.name
-            binding.tvMenuDescription.text = responseResult.data.description
             basePrice = responseResult.data.basePrice
             binding.tvBasePrice.text = moneyFormat(responseResult.data.basePrice)
             imageUri = responseResult.data.image
             binding.ivMenu.load(responseResult.data.image)
-            binding.tvAddPrice.text = moneyFormat(responseResult.data.basePrice)
+            binding.tvAddPrice.text = "${moneyFormat(responseResult.data.basePrice)} 담기"
             responseResult.data.optionCategories.let {
                 optionRVAdapter.submitList(it)
-                Log.e("optionCategories", it.toString())
             }
         }
     }
 
-    //cartId가 뭐임?
     private fun addCartItem() {
         val cartItemAddRequest = CartItemAddRequestDto(
-            1,
+            5,
             1,
             binding.tvMenuName.text.toString(),
             binding.ivMenu.toString(),
             binding.tvAddPrice.text.replace("[^0-9]".toRegex(), "").toInt(),
-            "추가된 옵션들",
+            totalOption,
             binding.tvCount.text.replace("[^0-9]".toRegex(), "").toInt()
         )
-
         cartItemAddViewModel.addCartItem(cartItemAddRequest)
-
-//        cartItemAddViewModel.responseResult.observe(this) { responseResult ->
-//            val cartItemId = responseResult.data.cartItemId
-//            val name = responseResult.data.name
-//            val count = responseResult.data.count
-//            val price = responseResult.data.price
-//        }
     }
 
     private fun clickCount() {
@@ -122,7 +115,7 @@ class StoreDetailActivity :
             binding.btnMinus.setColorFilter(Color.parseColor("#000000"))
             val price = binding.tvAddPrice.text.replace("[^0-9]".toRegex(), "").toInt()
             val totalPrice = price + basePrice
-            binding.tvAddPrice.text = moneyFormat(totalPrice)
+            binding.tvAddPrice.text = "${moneyFormat(totalPrice)} 담기"
 
         }
 
@@ -132,7 +125,7 @@ class StoreDetailActivity :
                 binding.tvCount.text = "${count}개"
                 val price = binding.tvAddPrice.text.replace("[^0-9]".toRegex(), "").toInt()
                 val totalPrice = price - basePrice
-                binding.tvAddPrice.text = moneyFormat(totalPrice)
+                binding.tvAddPrice.text = "${moneyFormat(totalPrice)} 담기"
                 if (count == 1) binding.btnMinus.setColorFilter(Color.parseColor("#D9D9D9"))
             }
         }
