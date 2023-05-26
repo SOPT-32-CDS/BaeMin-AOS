@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 import sopt.haeti.baeminaos.BuildConfig
 import sopt.haeti.baeminaos.BuildConfig.BAEMIN_BASE_URL
 import sopt.haeti.baeminaos.data.service.HomeStoreListService
+import sopt.haeti.baeminaos.BuildConfig.BASE_URL
 import sopt.haeti.baeminaos.data.service.StoreService
 
 object StoreApiFactory {
@@ -22,7 +23,7 @@ object StoreApiFactory {
 
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(BAEMIN_BASE_URL)
+            .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()

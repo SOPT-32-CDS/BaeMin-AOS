@@ -37,4 +37,8 @@
     <string name="tv_main_horizontal_tip">배달팁</string>
     <string name="tv_main_horizontal_mock_tip">2,000원</string>
     <string name="tv_main_horizontal_coupon">쿠폰</string>
+    <string name="tv_count_kr">수량</string>
+    <string name="tv_min_price_kr">배달최소주문금액</string>
+    <string name="tv_min_price">15,000원</string>
+    <string name="tv_menu_description">초밥24p+날치알대마끼2p+고로케2p \n(흰살생선2p, 연어2p, 토핑연어2p,초새우2p,생새우2p, 간장새우2p,한치2p,계란2p,소고기 스테이크)</string>
 </resources>
