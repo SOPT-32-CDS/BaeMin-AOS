@@ -6,3 +6,4 @@
 ### 📢[Package Convention](https://www.notion.so/go-sopt/Package-Convention-b38cc00445d146cdb277608c7e9abbc9?pvs=4)
 
 
+### [시연영상 링크](https://www.notion.so/go-sopt/6-ff3c620558b849c0b62c46ec6dfb11c6?pvs=4)
