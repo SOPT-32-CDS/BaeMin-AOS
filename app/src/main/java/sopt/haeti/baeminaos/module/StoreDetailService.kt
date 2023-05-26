@@ -1,4 +1,4 @@
-package sopt.haeti.baeminaos.presentation.storedetail
+package sopt.haeti.baeminaos.module
 
 
 import retrofit2.Call
