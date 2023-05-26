@@ -1,15 +1,24 @@
 package sopt.haeti.baeminaos.presentation.store
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.LinearLayout
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import sopt.haeti.baeminaos.R
-import sopt.haeti.baeminaos.data.local.StoreMenu
-import sopt.haeti.baeminaos.data.local.StoreMenuDetail
 import sopt.haeti.baeminaos.databinding.ActivityStoreBinding
 import sopt.haeti.baeminaos.util.base.BindingActivity
+import timber.log.Timber
 
 class StoreActivity : BindingActivity<ActivityStoreBinding>(R.layout.activity_store) {
 
-
+    private var storeAdapter: StoreExpandableAdapter? = null
+    private val storeViewModel by viewModels<StoreViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -17,30 +26,23 @@ class StoreActivity : BindingActivity<ActivityStoreBinding>(R.layout.activity_st
     }
 
     private fun setAdapter() {
-        val storeMenuList = generateData()
-        val adapter = StoreExpandableAdapter(this, storeMenuList)
-        adapter.submitList(storeMenuList)
-        binding.rvMenu.adapter = adapter
-    }
+        val decoration = DividerItemDecoration(this, LinearLayout.VERTICAL)
+        Log.e("setAdapter", "setAdapter")
 
-    private fun generateData(): List<StoreMenu> {
-        val storeMenuList = mutableListOf<StoreMenu>()
-        for (i in 0..5) {
+        storeViewModel.menuCategory.flowWithLifecycle(lifecycle).onEach { menuCategory ->
+            Log.e("menuCategory", menuCategory.toString())
+            Timber.e(menuCategory.toString())
+            storeAdapter = StoreExpandableAdapter(this, menuCategory.toMutableList())
+            storeAdapter?.submitList(menuCategory.toMutableList())
 
-            val innerItemList = mutableListOf<StoreMenuDetail>()
-            for (j in 0..2) {
-                innerItemList.add(
-                    j, StoreMenuDetail(
-                        "[재주문 1위] 특초밥+미...",
-                        "흰살생선3p, 연어 2p, 참치1p, 황새치 1p,\n초새우1p, 간장새우1p, 생새우1p, 소...",
-                        16000, "https://i.ibb.co/ydXz7jN/menu.png"
-                    )
-                )
+            binding.rvMenu.apply {
+                layoutManager = LinearLayoutManager(this@StoreActivity)
+                adapter = storeAdapter
+                addItemDecoration(decoration)
             }
-            storeMenuList.add(StoreMenu("인기 메뉴", false, innerItemList))
-        }
 
-        return storeMenuList
-
+        }.launchIn(lifecycleScope)
     }
+
+
 }
