@@ -148,10 +148,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="90dp"
-                        android:layout_marginTop="54dp"
+                        android:layout_marginTop="18dp"
                         android:textColor="@color/gray1"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cart_item_1_menu"
                         tools:text="· 가격 : 10p (11,000원) \n· 사이드 추가선택 : 새우튀김 6p 추가 (7,000원)" />
 
                     <TextView
@@ -160,9 +160,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="90dp"
-                        android:layout_marginTop="100dp"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_cart_item_1_option"
                         tools:text="36,000원" />
 
                     <androidx.appcompat.widget.AppCompatButton

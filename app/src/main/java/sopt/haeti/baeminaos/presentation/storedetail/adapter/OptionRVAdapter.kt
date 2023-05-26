@@ -1,56 +1,48 @@
 package sopt.haeti.baeminaos.presentation.storedetail.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import sopt.haeti.baeminaos.data.local.StoreDetailChoiceDataClass
-import sopt.haeti.baeminaos.data.local.StoreDetailOptionDataClass
+import sopt.haeti.baeminaos.data.remote.StoreDetailData
 import sopt.haeti.baeminaos.databinding.ItemStoreOptionBinding
+import sopt.haeti.baeminaos.presentation.storedetail.TotalPrice
 
-class OptionRVAdapter() : ListAdapter<StoreDetailOptionDataClass, OptionRVAdapter.ViewHolder>(diffUtil) {
+class OptionRVAdapter(val totalPrice: TotalPrice) :
+    ListAdapter<StoreDetailData.Data.OptionCategories, OptionRVAdapter.ViewHolder>(diffUtil) {
 
-    class ViewHolder(private val binding: ItemStoreOptionBinding) :
+    inner class ViewHolder(private val binding: ItemStoreOptionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(item : StoreDetailOptionDataClass) {
+        fun bind(item: StoreDetailData.Data.OptionCategories) {
 
-                binding.tvName.text = item.title
-                binding.tvDescription.text = item.maxCount
+            binding.tvName.text = item.name
+            binding.tvDescription.text = item.description
 
-                val choiceAdapter = ChoiceRVAdapter()
+            //옵션 선택 사항 recyclerView
+            val choiceAdapter = ChoiceRVAdapter(totalPrice)
 
-                val data = mutableListOf(
-                    StoreDetailChoiceDataClass(
-                        "옵션1",
-                        7000
-                    ),
-                    StoreDetailChoiceDataClass(
-                        "옵션1",
-                        7000
-                    ),
-                    StoreDetailChoiceDataClass(
-                        "옵션1",
-                        7000
-                    ),
-                )
-
-                choiceAdapter.submitList(data)
-                binding.rvChoice.apply {
-                    layoutManager = LinearLayoutManager(binding.rvChoice.context)
-                    adapter = choiceAdapter
-                }
+            item.options.let {
+                choiceAdapter.submitList(it)
             }
+
+            binding.rvChoice.apply {
+                layoutManager = LinearLayoutManager(binding.rvChoice.context)
+                adapter = choiceAdapter
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemStoreOptionBinding.inflate(LayoutInflater.from(parent.context),parent, false))
+        return ViewHolder(
+            ItemStoreOptionBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -58,18 +50,18 @@ class OptionRVAdapter() : ListAdapter<StoreDetailOptionDataClass, OptionRVAdapte
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<StoreDetailOptionDataClass>() {
+        val diffUtil = object : DiffUtil.ItemCallback<StoreDetailData.Data.OptionCategories>() {
 
             override fun areItemsTheSame(
-                oldItem: StoreDetailOptionDataClass,
-                newItem: StoreDetailOptionDataClass
+                oldItem: StoreDetailData.Data.OptionCategories,
+                newItem: StoreDetailData.Data.OptionCategories
             ): Boolean {
-                return oldItem.title == newItem.title
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: StoreDetailOptionDataClass,
-                newItem: StoreDetailOptionDataClass
+                oldItem: StoreDetailData.Data.OptionCategories,
+                newItem: StoreDetailData.Data.OptionCategories
             ): Boolean {
                 return oldItem == newItem
             }

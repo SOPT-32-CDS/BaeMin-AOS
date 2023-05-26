@@ -23,6 +23,7 @@ android {
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BAEMIN_BASE_URL", properties["baemin.base.url"]
     }
 
     buildTypes {
