@@ -36,10 +36,6 @@
         </activity>
       
         <activity
-            android:name=".presentation.cart.CartActivity"
-            android:exported="false"></activity>
-      
-        <activity
             android:name=".presentation.store.StoreActivity"
             android:exported="true"
             android:screenOrientation="portrait">
