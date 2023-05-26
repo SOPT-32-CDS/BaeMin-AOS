@@ -19,13 +19,14 @@
             android:name=".presentation.home.HomeActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-          
-           <intent-filter>
+
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-          
+
+
         </activity>
 
         <activity
@@ -34,24 +35,18 @@
             android:screenOrientation="portrait">
 
         </activity>
-      
+
         <activity
             android:name=".presentation.cart.CartActivity"
             android:exported="false"></activity>
-      
+
         <activity
             android:name=".presentation.store.StoreActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait">
 
-        </activity>
-      
-        <activity
-            android:name=".presentation.cart.CartActivity"
-            android:exported="true">
-           
-        </activity>
 
+        </activity>
     </application>
 
 </manifest>

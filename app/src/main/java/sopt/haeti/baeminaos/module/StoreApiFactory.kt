@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import sopt.haeti.baeminaos.BuildConfig
 import sopt.haeti.baeminaos.BuildConfig.BAEMIN_BASE_URL
+import sopt.haeti.baeminaos.data.service.HomeStoreListService
 import sopt.haeti.baeminaos.data.service.StoreService
 
 object StoreApiFactory {
@@ -32,4 +33,5 @@ object StoreApiFactory {
 
 object StoreServicePool {
     val storeService = StoreApiFactory.create<StoreService>()
+    val storeListService = StoreApiFactory.create<HomeStoreListService>()
 }

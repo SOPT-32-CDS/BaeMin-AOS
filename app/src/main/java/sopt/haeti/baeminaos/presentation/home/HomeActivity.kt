@@ -3,7 +3,13 @@ package sopt.haeti.baeminaos.presentation.home
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.local.mockBannerItemList
 import sopt.haeti.baeminaos.data.local.mockCartegoryItemList
@@ -14,6 +20,10 @@ import sopt.haeti.baeminaos.util.base.BindingActivity
 import timber.log.Timber
 
 class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home) {
+
+    private var storeListAdapter: HomeStoreAdapter? = null
+    private val viewModel by viewModels<HomeViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -29,27 +39,16 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
 
         // 배너 인디케이터 설정
         binding.tvMainIndicatorTotal.text = mockBannerItemList.size.toString()
-        binding.viewPagerMainBanner.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.viewPagerMainBanner.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.tvMainIndicatorCurrent.text = (position + 1).toString()
             }
         })
 
-        // 팁 아이템 설정
-        binding.rcvMainTip.adapter = HomeTipAdapter().apply {
-            submitList(mockTipTextList)
-        }
+        setAdapter()
 
-        // 카테고리 아이템 설정
-        binding.rcvMainCategory.adapter = HomeCategoryAdapter().apply {
-            submitList(mockCartegoryItemList)
-        }
-
-        // 가로 가게리스트 설정
-        binding.rcvMainHorizontal.adapter = HomeHorizontalAdapter().apply {
-            submitList(mockStoreList)
-        }
     }
 
     // 툴바에 아이템 설정
@@ -64,12 +63,44 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
             R.id.menu_cart_toolbar_home -> {
                 Timber.d("툴바 메인화면 버튼 클릭")
             }
+
             R.id.menu_cart_toolbar_person_plus -> {
                 //도움말 버튼 눌렀을 때
                 Timber.d("툴바 친구추가 버튼 클릭")
             }
+
             else -> return super.onOptionsItemSelected(item)
         }
         return true
+    }
+
+    private fun setAdapter() {
+        // 팁 아이템 설정
+        binding.rcvMainTip.adapter = HomeTipAdapter().apply {
+            submitList(mockTipTextList)
+        }
+
+        // 카테고리 아이템 설정
+        binding.rcvMainCategory.adapter = HomeCategoryAdapter().apply {
+            submitList(mockCartegoryItemList)
+        }
+
+        // 가로 가게리스트 설정
+        binding.rcvMainHorizontal.adapter = HomeHorizontalAdapter().apply {
+            submitList(mockStoreList)
+        }
+
+        // 세로 가게리스트 설정
+
+        viewModel.storeList.flowWithLifecycle(lifecycle).onEach { storeList ->
+            storeListAdapter = HomeStoreAdapter(this).apply {
+                submitList(storeList)
+            }
+
+            binding.rvStore.apply {
+                layoutManager = LinearLayoutManager(this@HomeActivity)
+                adapter = storeListAdapter
+            }
+        }.launchIn(lifecycleScope)
     }
 }
