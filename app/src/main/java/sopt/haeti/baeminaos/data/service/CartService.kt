@@ -11,20 +11,20 @@ import sopt.haeti.baeminaos.data.remote.*
 
 interface CartService {
 
-    @GET("/cart")
+    @GET("cart")
     fun getList(): Call<CartItemResponseDto>
 
-    @PATCH("/cart")
+    @PATCH("cart")
     fun updateCount(
         @Body request: CartCountRequestDto,
     ): Call<CartCountResponseDto>
 
-    @DELETE("/cart/{cartItemId}")
+    @DELETE("cart/{cartItemId}")
     fun deleteCart(
         @Path("cartItemId") cartItemId: Int
     ): Call<CartDeleteResponseDto>
 
-    @POST("/cart/{cartId}")
+    @POST("cart/{cartId}")
     fun order(
         @Path("cartId") cartId: Int
     ): Call<CartOrderResponseDto>

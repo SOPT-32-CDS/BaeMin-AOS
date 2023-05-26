@@ -7,10 +7,10 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import sopt.haeti.baeminaos.BuildConfig
-import sopt.haeti.baeminaos.data.service.CartService
+import sopt.haeti.baeminaos.BuildConfig.BAEMIN_BASE_URL
+import sopt.haeti.baeminaos.data.service.StoreService
 
-object CartApiFactory {
-    private const val BASE_URL = BuildConfig.BAEMIN_BASE_URL
+object StoreApiFactory {
 
     private val client by lazy {
         OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
@@ -21,15 +21,15 @@ object CartApiFactory {
 
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .baseUrl(BAEMIN_BASE_URL)
             .client(client)
+            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
 }
 
-object ServicePool {
-    val cartService = CartApiFactory.create<CartService>()
+object StoreServicePool {
+    val storeService = StoreApiFactory.create<StoreService>()
 }
