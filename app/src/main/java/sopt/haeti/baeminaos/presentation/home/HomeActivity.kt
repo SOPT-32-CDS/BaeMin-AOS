@@ -1,5 +1,6 @@
 package sopt.haeti.baeminaos.presentation.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -16,6 +17,7 @@ import sopt.haeti.baeminaos.data.local.mockCartegoryItemList
 import sopt.haeti.baeminaos.data.local.mockStoreList
 import sopt.haeti.baeminaos.data.local.mockTipTextList
 import sopt.haeti.baeminaos.databinding.ActivityHomeBinding
+import sopt.haeti.baeminaos.presentation.store.StoreActivity
 import sopt.haeti.baeminaos.util.base.BindingActivity
 import timber.log.Timber
 
@@ -48,6 +50,11 @@ class HomeActivity : BindingActivity<ActivityHomeBinding>(R.layout.activity_home
         })
 
         setAdapter()
+
+        binding.rvStore.setOnClickListener {
+            Timber.e("가게리스트 클릭")
+            startActivity(Intent(this, StoreActivity::class.java))
+        }
 
     }
 
