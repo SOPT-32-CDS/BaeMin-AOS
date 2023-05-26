@@ -11,3 +11,7 @@ fun View.showSnackbar(message: String, isShort: Boolean = true) {
     }
     Snackbar.make(this, message, duration).show()
 }
+
+fun View.visible(isVisible: Boolean) {
+    visibility = if (isVisible) View.VISIBLE else View.GONE
+}
