@@ -25,10 +25,22 @@ class ChoiceRVAdapter(val totalPrice: TotalPrice, val totalOption: TotalOption) 
             binding.tvName.text = item.name
             binding.tvPrice.text = "+$itemPrice"
 
-            //아이템 클릭 시 체크박스 상태 바뀜
+            //아이템 전체 클릭 시 체크박스 상태 바뀜
             binding.root.setOnClickListener {
 
                 binding.checkbox.isChecked = !binding.checkbox.isChecked
+
+                if (binding.checkbox.isChecked) {
+                    totalPrice.calcTotalPrice(item.price)
+                    totalOption.addOption(item.name + "(${itemPrice})")
+                } else {
+                    totalPrice.calcTotalPrice((item.price) * (-1))
+                    totalOption.deleteOption(item.name + "(${itemPrice})")
+                }
+            }
+
+            //체크박스 클릭 시 이벤트
+            binding.checkbox.setOnClickListener {
 
                 if (binding.checkbox.isChecked) {
                     totalPrice.calcTotalPrice(item.price)
