@@ -7,3 +7,8 @@
 
 
 ### [시연영상 링크](https://www.notion.so/go-sopt/6-ff3c620558b849c0b62c46ec6dfb11c6?pvs=4)
+
+
+
+https://github.com/SOPT-32-CDS/BaeMin-AOS/assets/98825364/47bfbe18-7436-46bf-b5c3-ac4476568218
+
