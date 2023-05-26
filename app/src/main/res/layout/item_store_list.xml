@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    android:background="@drawable/bg_white_border"
+    android:paddingBottom="13dp"
+    android:elevation="2dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_store_list"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_store_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_store_name"
+        style="@style/TextAppearance.Pretendard.SemiBold.H3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="12dp"
+        android:text="육회연어각 육연각"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_store_list" />
+
+    <ImageView
+        android:id="@+id/iv_store_rating"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_star"
+        app:layout_constraintBottom_toBottomOf="@id/tv_store_name"
+        app:layout_constraintStart_toEndOf="@id/tv_store_name"
+        app:layout_constraintTop_toTopOf="@id/tv_store_name" />
+
+    <TextView
+        style="@style/TextAppearance.Pretendard.SemiBold.Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.9"
+        app:layout_constraintBottom_toBottomOf="@id/iv_store_rating"
+        app:layout_constraintStart_toEndOf="@id/iv_store_rating"
+        app:layout_constraintTop_toTopOf="@id/iv_store_rating" />
+
+    <TextView
+        style="@style/TextAppearance.Pretendard.Regular.Body4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/bg_orange_round"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="2dp"
+        android:text="@string/tv_main_horizontal_coupon"
+        android:textColor="#EF9432"
+        app:layout_constraintBottom_toBottomOf="@id/iv_store_rating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_store_rating" />
+
+    <ImageView
+        android:id="@+id/iv_store_delivery"
+        android:layout_width="58dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_one_delivery"
+        app:layout_constraintStart_toStartOf="@id/tv_store_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_store_name" />
+
+    <TextView
+        android:id="@+id/tv_store_delivery_time"
+        style="@style/TextAppearance.Pretendard.Regular.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="21~31분"
+        app:layout_constraintBottom_toBottomOf="@id/iv_store_delivery"
+        app:layout_constraintStart_toEndOf="@id/iv_store_delivery"
+        app:layout_constraintTop_toTopOf="@id/iv_store_delivery" />
+
+    <TextView
+        android:id="@+id/tv_store_delivery_tip"
+        style="@style/TextAppearance.Pretendard.Regular.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="배달팁 0원~3,500원"
+        app:layout_constraintBottom_toBottomOf="@id/tv_store_delivery_time"
+        app:layout_constraintStart_toEndOf="@id/tv_store_delivery_time"
+        app:layout_constraintTop_toTopOf="@id/tv_store_delivery_time" />
+
+    <TextView
+        android:id="@+id/tv_min_order"
+        style="@style/TextAppearance.Pretendard.Regular.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="최소주문"
+        android:textColor="@color/gray1"
+        app:layout_constraintStart_toStartOf="@id/iv_store_delivery"
+        app:layout_constraintTop_toBottomOf="@id/iv_store_delivery" />
+
+    <TextView
+        android:id="@+id/tv_min_order_price"
+        style="@style/TextAppearance.Pretendard.Regular.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="13,000원"
+        app:layout_constraintBottom_toBottomOf="@id/tv_min_order"
+        app:layout_constraintStart_toEndOf="@id/tv_min_order"
+        app:layout_constraintTop_toTopOf="@id/tv_min_order" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

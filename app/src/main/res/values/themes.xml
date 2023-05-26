@@ -94,4 +94,45 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <!-- Chips Style -->
+
+    <style name="Widget.App.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="chipCornerRadius">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="chipBackgroundColor">@color/gray2</item>
+        <item name="android:textAppearance">@style/TextAppearance.Pretendard.SemiBold.Body3</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+    </style>
+
+    <style name="Widget.App.Chip.Choice.Basic" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="chipCornerRadius">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="chipBackgroundColor">@color/white</item>
+        <item name="android:textAppearance">@style/TextAppearance.Pretendard.SemiBold.Body3</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+    </style>
+
+    <style name="Widget.App.Chip.Choice.Coupon" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="elevationOverlayEnabled">false</item>
+        <item name="chipCornerRadius">24dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="chipBackgroundColor">#E9F8F8</item>
+        <item name="android:textAppearance">@style/TextAppearance.Pretendard.SemiBold.Body3</item>
+        <item name="chipStartPadding">12dp</item>
+        <item name="chipEndPadding">12dp</item>
+    </style>
+
+
+    <style name="Widget.App.ChipGroup" parent="Widget.MaterialComponents.ChipGroup">
+        <item name="android:singleLine">true</item>
+        <item name="singleSelection">true</item>
+        <item name="selectionRequired">true</item>
+        <item name="chipSpacingHorizontal">4dp</item>
+    </style>
+
+
 </resources>
