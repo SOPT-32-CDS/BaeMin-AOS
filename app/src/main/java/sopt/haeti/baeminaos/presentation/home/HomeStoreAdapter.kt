@@ -2,12 +2,15 @@ package sopt.haeti.baeminaos.presentation.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import sopt.haeti.baeminaos.data.local.StoreList
 import sopt.haeti.baeminaos.databinding.ItemStoreListBinding
+import sopt.haeti.baeminaos.presentation.store.StoreActivity
 import sopt.haeti.baeminaos.util.ItemDiffCallback
 
 class HomeStoreAdapter(context: Context) :
@@ -39,6 +42,10 @@ class HomeStoreAdapter(context: Context) :
                 data.min_delivery_time.toString() + "~" + data.max_delivery_time.toString() + "분"
             binding.tvStoreDeliveryTip.text = "배달팁" + data.delivery_fee + "원"
             binding.tvMinOrderPrice.text = data.min_order_amount.toString() + "원"
+
+            binding.root.setOnClickListener {
+                binding.root.context.startActivity(Intent(it.context, StoreActivity::class.java))
+            }
         }
     }
 

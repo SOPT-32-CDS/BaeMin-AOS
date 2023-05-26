@@ -1,6 +1,7 @@
 package sopt.haeti.baeminaos.presentation.store
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +10,7 @@ import coil.load
 import sopt.haeti.baeminaos.R
 import sopt.haeti.baeminaos.data.remote.StoreDetailResponseDto
 import sopt.haeti.baeminaos.databinding.ItemStoreMenuDetailBinding
+import sopt.haeti.baeminaos.presentation.storedetail.StoreDetailActivity
 import sopt.haeti.baeminaos.util.ItemDiffCallback
 import java.text.DecimalFormat
 
@@ -43,6 +45,11 @@ class StoreMenuInnerAdapter(
             binding.tvBestMenuDesc.text = wrapText(item.description, 28)
             binding.tvBestMenuPrice.text = moneyFormat(item.base_price)
             binding.ivMenuDetail.load(item.image)
+
+            binding.root.setOnClickListener {
+                binding.root.context.startActivity(Intent(it.context, StoreDetailActivity::class.java))
+            }
+
             binding.executePendingBindings()
 
         }

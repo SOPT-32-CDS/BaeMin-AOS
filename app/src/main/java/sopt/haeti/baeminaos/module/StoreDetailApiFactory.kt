@@ -8,7 +8,7 @@ import sopt.haeti.baeminaos.BuildConfig
 
 object StoreDetailApiFactory {
 
-    private const val BASE_URL = BuildConfig.BASE_URL
+    private const val BASE_URL = BuildConfig.BAEMIN_BASE_URL
 
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
