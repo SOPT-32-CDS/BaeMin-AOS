@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StoreDetailResponseDto(
     @SerialName("data")
-    val datas: List<Data>,
+    val datas: Data,
     @SerialName("message")
     val message: String,
     @SerialName("status")
@@ -16,8 +16,6 @@ data class StoreDetailResponseDto(
     data class Data(
         @SerialName("delivery_fee")
         val delivery_fee: Int,
-        @SerialName("has_coupon")
-        val has_coupon: Boolean,
         @SerialName("id")
         val id: Int,
         @SerialName("image")
@@ -26,6 +24,8 @@ data class StoreDetailResponseDto(
         val max_delivery_time: Int,
         @SerialName("menu_categories")
         val menu_categories: List<MenuCategory>,
+        @SerialName("coupon")
+        val coupon: String = "direct-coupon",
         @SerialName("min_delivery_time")
         val min_delivery_time: Int,
         @SerialName("min_order_amount")
@@ -42,7 +42,8 @@ data class StoreDetailResponseDto(
             @SerialName("menus")
             val menus: List<Menu>,
             @SerialName("name")
-            val name: String
+            val name: String,
+            var isExpanded: Boolean = false
         ) {
             @Serializable
             data class Menu(
