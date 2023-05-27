@@ -2,8 +2,10 @@ package sopt.haeti.baeminaos.module
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import sopt.haeti.baeminaos.BuildConfig
@@ -16,7 +18,7 @@ object CartApiFactory {
         OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor().apply {
             level =
                 if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-        }).build()
+        }).addInterceptor(AddingMobileTokenInterceptor()).build()
     }
 
     val retrofit: Retrofit by lazy {
@@ -32,4 +34,16 @@ object CartApiFactory {
 
 object ServicePool {
     val cartService = CartApiFactory.create<CartService>()
+}
+
+class AddingMobileTokenInterceptor() : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val token =
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRkcmVzcyI6IuyGoe2MjOq1rCDsmKzrprztlL3roZwgMTM1In0.hh0main0EWtZYLHWlO3GfdrDgPDaAipNTkBlxgc5KSY"
+
+        val tokenAddedRequest =
+            chain.request().newBuilder().addHeader("authorization", token).build()
+
+        return chain.proceed(tokenAddedRequest)
+    }
 }
