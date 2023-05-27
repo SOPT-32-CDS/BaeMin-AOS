@@ -7,7 +7,9 @@ import sopt.haeti.baeminaos.data.remote.*
 interface CartService {
 
     @GET("cart")
-    fun getList(): Call<CartItemResponseDto>
+    fun getList(
+        @Header("authorization") token : String = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRkcmVzcyI6IuyGoe2MjOq1rCDsmKzrprztlL3roZwgMTM1In0.hh0main0EWtZYLHWlO3GfdrDgPDaAipNTkBlxgc5KSY"
+    ): Call<CartItemResponseDto>
 
     @PATCH("cart")
     fun updateCount(
