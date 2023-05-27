@@ -319,7 +319,8 @@
         <ImageView
             android:id="@+id/iv_bnv"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="61dp"
+            android:elevation="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/nav"
             app:layout_constraintBottom_toBottomOf="parent" />

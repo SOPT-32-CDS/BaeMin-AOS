@@ -81,6 +81,7 @@ class CartActivity : BindingActivity<ActivityCartBinding>(R.layout.activity_cart
 
         // 주문 버튼 구현
         binding.btnCartPurchase.setOnClickListener {
+            cartOrderViewModel.orderItemToServer(cartId)
             startActivity(Intent(this, OrderCompleteActivity::class.java))
         }
 

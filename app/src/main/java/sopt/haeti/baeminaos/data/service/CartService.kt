@@ -1,18 +1,15 @@
 package sopt.haeti.baeminaos.data.service
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import sopt.haeti.baeminaos.data.remote.*
 
 interface CartService {
 
     @GET("cart")
-    fun getList(): Call<CartItemResponseDto>
+    fun getList(
+        @Header("authorization") token : String = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiYWRkcmVzcyI6IuyGoe2MjOq1rCDsmKzrprztlL3roZwgMTM1In0.hh0main0EWtZYLHWlO3GfdrDgPDaAipNTkBlxgc5KSY"
+    ): Call<CartItemResponseDto>
 
     @PATCH("cart")
     fun updateCount(
